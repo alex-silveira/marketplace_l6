@@ -31,6 +31,27 @@ Route::get('/model', function(){
     //\App\User::where('name', 'Dusty Rempel')->get(); - select * from users where name = 'Dusty Rempel'
     //\App\User::where('name', 'Dusty Rempel')->first(); - primeiro resultado do select
     //\App\User::paginate(10); - paginar dados
-    
     //return $products;
+
+    // Mass assignment - Atribuição em massa
+
+    // $user = \App\User::create(
+    //     [
+    //         'name' => 'Alex Araújo ',
+    //         'email' => 'alex2@email.com',
+    //         'password' => bcrypt('12345'),
+    //     ]
+    // );
+
+    //Mass Update
+    // $user = \App\User::find(42);
+    // $user->update(
+    //     [
+    //         'name' => 'Atualizando com Mass Update'
+    //     ]
+    // ); // true / false
+    
+    // dd($user);
+
+    return \App\User::all();
 });
