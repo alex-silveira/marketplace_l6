@@ -53,5 +53,68 @@ Route::get('/model', function(){
     
     // dd($user);
 
+    // pegar a loja de um usuário
+    $user = \App\User::find(4);
+    //return $user->store; // retonar o objeto único (Store) se for Collection de Dados(Objetos)
+    //return dd($user->store()->count());
+
+    //Pegar os produtos de uma loja
+    $loja = \App\Store::find(4);    
+    //return $loja->products->count();
+    //return $loja->products()->where('id', 4)->get();
+
+    //Pegar as lojas de uma categoria
+    //$categoria = \App\Category::find(1);
+    //$categoria->products;
+
+    //Criar uma loja para um usuário
+    // $user = \App\User::find(10);
+    // $store = $user->store()->create(
+    //     [
+    //         'name' => 'Loja Teste',
+    //         'description' => 'Loja Teste de informática',
+    //         'mobile_phone' => 'XX-XXXXX-XXXX',
+    //         'phone' => 'XX-XXXXX-XXXX',
+    //         'slug' => 'loja-teste',
+    //     ]
+    // );    
+
+    //Criar um produto para uma loja
+    // $store = \App\Store::find(41);
+    // $product = $store->products()->create(
+    //     [
+    //         'name' => 'Notebook Dell',
+    //         'description' => 'CORE I5 10GB',
+    //         'body' => 'Qualquer coisa...',
+    //         'price' => 2999.90,
+    //         'slug' => 'notebook-dell',
+    //     ]
+    // );
+    
+    //Criar uma categoria
+    // \App\Category::create(
+    //     [
+    //         'name' => 'Games',
+    //         'slug' => 'games',
+    //     ]
+    // );    
+
+    // \App\Category::create(
+    //     [
+    //         'name' => 'Notebooks',
+    //         'slug' => 'notebooks',
+    //     ]
+    // );   
+    // return \App\Category::all();
+
+    //Adicionar um produto para uma categoria e vice-versa
+
+    // $product = \App\Product::find(1);
+    // //dd($product->categories()->attach([3])); //add
+    // //dd($product->categories()->detach([3])); //remove
+    // dd($product->categories()->sync([3])); //Se não existe adiciona, se existe exclui
+
+    // $product = \App\Product::find(1);
+    // return $product->categories;
     return \App\User::all();
 });
