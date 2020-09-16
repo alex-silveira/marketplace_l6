@@ -13,7 +13,8 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // Código ou programa que é executado entre a requisição (Request) e a nossa aplicação (Lógica executada pelo acesso a uma determinada rota)
+        $this->middleware('auth'); // verificar se o usuária está logado ou não
     }
 
     /**
