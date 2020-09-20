@@ -53,15 +53,6 @@
             <input type="text" name="slug" class="form-control" value="{{old('name')}}">
         </div>
         
-        <div class="form-group">
-            <label for="">Lojas</label>
-            <select name="store" class="form-control">
-                @foreach ($stores as $store)
-                    <option value="{{$store->id}}">{{$store->name}}</option>
-                @endforeach
-            </select>
-        </div>
-        
         <div>
             <button type="submit" class="btn btn-lg btn-success">Criar Produto</button>
         </div>
