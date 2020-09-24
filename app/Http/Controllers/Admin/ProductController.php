@@ -52,9 +52,15 @@ class ProductController extends Controller
         $data = $request->all();
 
         $store = auth()->user()->store;
+
         $product = $store->products()->create($data);
 
         $product->categories()->sync($data['categories']);
+
+        if($request->hasFile('photos')){
+            $images = $this->imageUpload($request, 'image');
+            $product->photos()->createMany($images);
+        }
 
         flash('Produto Criado com sucesso!')->success();
         return redirect()->route('admin.products.index');
@@ -98,6 +104,11 @@ class ProductController extends Controller
         $product = $this->product->find($product);
         $product->update($data);
         $product->categories()->sync($data['categories']);
+
+        if($request->hasFile('photos')){
+            $images = $this->imageUpload($request, 'image');
+            $product->photos()->createMany($images);
+        }
         
         flash('Produto Atualizado com sucesso!')->success();
         return redirect()->route('admin.products.index');
@@ -115,5 +126,18 @@ class ProductController extends Controller
         $product->delete();
         flash('Produto Removido com sucesso!')->success();
         return redirect()->route('admin.products.index');
+    }
+    
+    private function imageUpload(Request $request, $imageColumn)
+    {
+        $images = $request->file('photos');
+
+        $uploadedImages = [];
+
+        foreach($images as $image){
+            $uploadedImages[] = [$imageColumn => $image->store('products', 'public')];
+        }
+
+        return $uploadedImages;
     }
 }
