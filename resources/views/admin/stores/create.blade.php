@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <h1>Criar Loja</h1>
-    <form action="{{route('admin.stores.store')}}" method="post">
+    <form action="{{route('admin.stores.store')}}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
             <label for="">Nome Loja</label>
@@ -47,6 +47,17 @@
             @enderror
         </div>
         
+        <div class="form-group">
+            <label>Fotos do produto</label>
+            <input type="file" name="logo" class="form-control  @error('logo') is-invalid @enderror" multiple>
+
+            @error('logo') 
+                <div class="invalid-feedback">
+                    {{$message}}
+                </div>
+            @enderror
+        </div>
+
         <div class="form-group">
             <label for="">Slug</label>
             <input type="text" name="slug" class="form-control" value="{{old('slug')}}">
