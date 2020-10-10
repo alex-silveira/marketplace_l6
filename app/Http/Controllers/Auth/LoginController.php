@@ -37,4 +37,13 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    protected function authenticated(Request $resquest, $user)
+    {
+        if(session()->has('cart')){
+            return redirect()->action('checkout.index');
+        }
+
+        return null;
+    }
 }
