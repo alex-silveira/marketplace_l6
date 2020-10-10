@@ -19,8 +19,12 @@ Route::prefix('cart')->name('cart.')->group(function(){
     Route::post('add', 'CartController@add')->name('add');
     Route::get('remove/{line}', 'CartController@remove')->name('remove');
     Route::get('cancel', 'CartController@cancel')->name('cancel');
-
 });
+
+Route::prefix('checkout')->name('checkout.')->group(function(){
+    Route::get('/', 'CheckoutController@index')->name('index');
+});
+
 //Route::get
 //Route::post
 //Route::put - atualização
