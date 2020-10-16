@@ -21,6 +21,7 @@ class CreateTableStore extends Migration
             $table->string('phone');
             $table->string('mobile_phone');
             $table->string('slug');
+            $table->string('logo')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users'); // Nome da chave strang: stores_user_id_foreign
