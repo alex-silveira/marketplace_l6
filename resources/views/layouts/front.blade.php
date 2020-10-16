@@ -14,6 +14,7 @@
             margin-bottom: 40px;
         }
     </style>
+    @yield('stylesheets')
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-bottom: 40px;">
@@ -45,11 +46,20 @@
 
         <div class="my-2 my-lg-0">
             <ul class="navbar-nav mr-auto">
+                @if (!Auth::check())
+                    <li class="nav-item">
+                        <a href="{{route('login')}}" class="nav-link">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('register')}}" class="nav-link">Registre-se</a>
+                    </li>
+                @endif
+
                 <li class="nav-item">
-                    <a href="{{route('login')}}" class="nav-link">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{route('register')}}" class="nav-link">Registre-se</a>
+                    <a class="nav-link" href="#" onclick="event.preventDefault(); document.querySelector('form.logout').submit();">Sair</a>
+                    <form action="{{route('logout')}}" class="logout" method="post" style="display: none;">
+                        @csrf
+                    </form>
                 </li>
             </ul>
         </div>
